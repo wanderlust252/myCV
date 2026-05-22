@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Dinh Hieu - Full CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --text-main: #1f2937;
+            --text-muted: #4b5563;
+            --bg-page: #e2e8f0;
+            --bg-cv: #ffffff;
+            --sidebar-bg: #0f172a;
+            --sidebar-text: #f8fafc;
+            --sidebar-muted: #94a3b8;
+            --sidebar-accent: #38bdf8;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .cv-container {
+            width: 100%;
+            max-width: 1100px;
+            background: var(--bg-cv);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            padding: 3.5rem 2rem;
+        }
+
+        .profile { text-align: center; margin-bottom: 3rem; }
+        .avatar {
+            width: 150px; height: 150px;
+            border-radius: 50%;
+            background-color: #1e293b;
+            margin: 0 auto 1.5rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 3.5rem; font-weight: bold; color: var(--sidebar-accent);
+            border: 4px solid #334155;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+        .name { font-size: 1.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.5rem; line-height: 1.2;}
+        .title { font-size: 1.1rem; color: var(--sidebar-accent); font-weight: 500; letter-spacing: 0.5px; }
+        
+        .section-title-side {
+            font-size: 1.1rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 1px; border-bottom: 2px solid #334155;
+            padding-bottom: 0.5rem; margin: 2rem 0 1rem; color: var(--sidebar-text);
+        }
+
+        .contact-list { list-style: none; font-size: 0.9rem; color: var(--sidebar-muted); }
+        .contact-list li { margin-bottom: 0.8rem; display: flex; flex-direction: column; }
+        .contact-list li strong { color: var(--sidebar-text); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.2rem; }
+        .contact-list li span { word-break: break-word; }
+
+        .skills-list { display: flex; flex-wrap: wrap; gap: 6px; }
+        .skill-tag {
+            background: #1e293b; border: 1px solid #334155;
+            padding: 4px 10px; border-radius: 6px;
+            font-size: 0.8rem; font-weight: 500; color: #e2e8f0;
+        }
+        
+        .edu-item { margin-bottom: 1.2rem; }
+        .edu-year { font-size: 0.8rem; color: var(--sidebar-accent); font-weight: 600; margin-bottom: 0.2rem; }
+        .edu-school { font-weight: 600; font-size: 0.95rem; color: var(--sidebar-text); line-height: 1.4; margin-bottom: 0.2rem;}
+        .edu-major { font-size: 0.85rem; color: var(--sidebar-muted); }
+
+        .extra-list { font-size: 0.85rem; color: var(--sidebar-muted); margin-bottom: 1rem;}
+        .extra-list li { margin-bottom: 0.5rem; list-style-type: square; margin-left: 1rem;}
+
+        /* MAIN CONTENT */
+        .main-content {
+            padding: 3rem 3rem;
+            background: #fff;
+        }
+
+        .section-title-main {
+            font-size: 1.4rem; font-weight: 700; color: var(--sidebar-bg);
+            text-transform: uppercase; letter-spacing: 1px;
+            border-bottom: 2px solid #e2e8f0; padding-bottom: 0.6rem;
+            margin-bottom: 1.5rem; margin-top: 2.5rem;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .section-title-main:first-child { margin-top: 0; }
+        .section-title-main::before {
+            content: ''; display: block; width: 20px; height: 4px;
+            background: var(--primary); border-radius: 2px;
+        }
+        
+        .summary { font-size: 0.95rem; color: var(--text-muted); text-align: justify; line-height: 1.7; }
+        
+        .exp-item { margin-bottom: 2.5rem; position: relative; }
+        .exp-item:last-child { margin-bottom: 0; }
+        
+        .exp-header { display: flex; justify-content: space-between; align-items: flex-start; border-left: 4px solid var(--primary); padding-left: 15px;}
+        .exp-header-left { flex: 1; }
+        
+        .exp-role { font-size: 1.2rem; font-weight: 700; color: var(--text-main); margin-bottom: 0.1rem; }
+        .exp-company { font-size: 1.05rem; font-weight: 600; color: var(--primary); text-transform: uppercase; }
+        .exp-date { font-size: 0.85rem; font-weight: 600; color: var(--text-muted); background: #f1f5f9; padding: 4px 12px; border-radius: 20px; white-space: nowrap; margin-left: 1rem;}
+        
+        .project { margin-top: 1.2rem; padding-left: 1.2rem; border-left: 2px solid #e2e8f0; }
+        .project-title { font-size: 1.05rem; font-weight: 600; color: var(--primary); margin-bottom: 0.4rem; display: flex; align-items: center; }
+        .project-tech { font-size: 0.85rem; font-weight: 500; color: var(--text-muted); margin-bottom: 0.5rem; }
+
+        .exp-desc { margin-top: 0.5rem; padding-left: 1.2rem; }
+        .exp-desc li { margin-bottom: 0.5rem; font-size: 0.9rem; color: var(--text-main); list-style-type: none; position: relative;}
+        .exp-desc li::before {
+            content: "•"; color: var(--primary); font-weight: bold; font-size: 1.2rem;
+            position: absolute; left: -1.2rem; top: -2px;
+        }
+        
+        @media (max-width: 900px) {
+            .cv-container { grid-template-columns: 1fr; }
+            .sidebar { padding: 2.5rem 2rem; }
+            .main-content { padding: 2.5rem 2rem; }
+            .exp-header { flex-direction: column; border-left: none; padding-left: 0; }
+            .exp-header-left { border-left: 4px solid var(--primary); padding-left: 15px; margin-bottom: 10px; }
+            .exp-date { margin-left: 0; }
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            @page { margin: 0; size: A4; }
+            body { background: none; padding: 0; display: block; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cv-container { max-width: 100%; box-shadow: none; border-radius: 0; grid-template-columns: 260px 1fr; min-height: 100vh; overflow: visible !important; }
+            .sidebar { padding: 1.5rem 1.2rem; }
+            .main-content { padding: 2rem 1.5rem; }
+            .exp-item { break-inside: auto; margin-bottom: 1.8rem; }
+            .project { break-inside: auto; }
+            .exp-desc li { break-inside: avoid; }
+            .section-title-main { margin-top: 1.5rem; margin-bottom: 1rem; }
+            .avatar { width: 100px; height: 100px; font-size: 2rem; border: 2px solid #334155; }
+            .name { font-size: 1.4rem; }
+            .summary, .exp-desc li, .project-tech, .contact-list { font-size: 0.85rem; }
+            .exp-role { font-size: 1.1rem; }
+            .exp-company { font-size: 0.95rem; }
+            .skill-tag { padding: 2px 6px; font-size: 0.75rem; border: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cv-container">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="profile">
+            <div class="avatar">
+                <img src="HIEU (1).png" alt="Le Dinh Hieu">
+            </div>
+            <h1 class="name">Le Dinh Hieu</h1>
+            <h2 class="title">React Native Developer</h2>
+        </div>
+
+        <h3 class="section-title-side">Contact</h3>
+        <ul class="contact-list">
+            <li><strong>Phone</strong><span>0382395051</span></li>
+            <li><strong>Email</strong><span>wanderlust252@gmail.com</span></li>
+            <li><strong>Location</strong><span>Ha Dong, Ha Noi</span></li>
+        </ul>
+
+        <h3 class="section-title-side">Skills</h3>
+        <div class="skills-list">
+            <span class="skill-tag">React Native</span>
+            <span class="skill-tag">React.js</span>
+            <span class="skill-tag">Vue.js</span>
+            <span class="skill-tag">Next.js</span>
+            <span class="skill-tag">TypeScript</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Java</span>
+            <span class="skill-tag">Expo</span>
+            <span class="skill-tag">Zustand</span>
+            <span class="skill-tag">React-Query</span>
+            <span class="skill-tag">CodePush / OTA</span>
+            <span class="skill-tag">RAG / MCP</span>
+            <span class="skill-tag">Web3 / Blockchain</span>
+            <span class="skill-tag">Firebase</span>
+        </div>
+
+        <h3 class="section-title-side">Education</h3>
+        <div class="edu-item">
+            <div class="edu-year">08/2016 - 08/2021</div>
+            <div class="edu-school">Academy of Cryptography Techniques</div>
+            <div class="edu-major">Embedded and Mobile Specialization</div>
+        </div>
+
+        <h3 class="section-title-side">Certifications</h3>
+        <ul class="extra-list">
+            <li>Certificate of completion Master React Native Animations (2019)</li>
+        </ul>
+
+        <h3 class="section-title-side">Awards</h3>
+        <ul class="extra-list">
+            <li>Won fourth prize in scientific research competition (2019)</li>
+        </ul>
+
+        <h3 class="section-title-side">Activities</h3>
+        <ul class="extra-list">
+            <li>Participated in Scientific Research: Local Chat Application (2019 - 2020)</li>
+            <li>Participated in Scientific Research: Social Media App (2018 - 2019)</li>
+            <li>Participated in Scientific Research: Security Solution For SQLite In Mobile (2017 - 2018)</li>
+        </ul>
+
+        <h3 class="section-title-side">Languages</h3>
+        <ul class="contact-list">
+            <li><strong>English</strong><span>Fluent at a sufficient level of communication</span></li>
+        </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <h2 class="section-title-main">About Me</h2>
+        <p class="summary">
+            Take advantages of information technology skills & experience to become a professional Developer. Always seek more challenges to improve myself and become a Technical leader. Good at both Teamwork and Working Independently, with strong time management, communication and presentation skills.
+        </p>
+
+        <h2 class="section-title-main">Experience</h2>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-header-left">
+                    <h3 class="exp-role">Senior React Native Engineer</h3>
+                    <div class="exp-company">Viettel Software</div>
+                </div>
+                <div class="exp-date">12/2025 - Present</div>
+            </div>
+            
+            <div class="project">
+                <h4 class="project-title">Metfone Express and Unitel Logistic</h4>
+                <div class="project-tech">Tech: React-native, python, OTA, RAG</div>
+                <ul class="exp-desc">
+                    <li>Senior React Native Engineer onsite with Viettel Post, delivering both mobile app and web products for multi-market rollout (Laos, Cambodia, Myanmar and upcoming Thailand, China).</li>
+                    <li>Designed and implemented a team-appropriate GitFlow, improving branch strategy.</li>
+                    <li>Led React Native upgrade initiative from 0.73 to 0.83, ensuring compatibility, stability, and minimal disruption.</li>
+                    <li>Implemented and configured OTA update pipeline (e.g., CodePush/OTA workflow), enabling faster releases and reduced dependency on app store cycles.</li>
+                    <li>Integrated label-printing functionality using xPrinter, improving operational support for logistics.</li>
+                    <li>Developed an optimized RAG server and integrated MCP for Metfone Express project (Cambodia), drastically minimizing prompt context lengths to reduce AI API operational costs.</li>
+                    <li>Deployed a self-hosted Python OTA server integrated with react-native-ota-hot-update.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-header-left">
+                    <h3 class="exp-role">Mobile Developer</h3>
+                    <div class="exp-company">MiraiLabs</div>
+                </div>
+                <div class="exp-date">04/2025 - 12/2025</div>
+            </div>
+
+            <div class="project">
+                <h4 class="project-title">Foxy AI (01/2025 - 12/2025)</h4>
+                <div class="project-tech">Tech: React-native new arch, zustand, react-query, MMKV, SSE</div>
+                <ul class="exp-desc">
+                    <li>Built the mobile foundation from scratch for Foxy AI, an AI chat application featuring character-based interaction and scenario/story modes.</li>
+                    <li>Designed a scalable and modular codebase using React Native, supporting server-driven matching logic, FTUE flows, and monetization via premium features.</li>
+                    <li>Integrated real-time chat via SSE, image/media handling, and conditional UI/UX logic.</li>
+                    <li>Bridged native functionalities by integrating custom Native Modules using UserDefaults and platform-specific storage APIs.</li>
+                    <li>Applied AI Agents with MCP to accelerate workflows, automate integration tasks, and optimize release efficiency.</li>
+                    <li>Implemented Firebase services and a self-hosted CodePush system for over-the-air updates.</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <h4 class="project-title">SnapShip (01/2025 - 04/2025)</h4>
+                <div class="project-tech">Tech: React-native, zustand, react-query, expo</div>
+                <ul class="exp-desc">
+                    <li>Developed an innovative mobile application empowering logistics companies and shipping providers to efficiently capture and document the condition of packages.</li>
+                    <li>Clearly outlined the project objectives, deliverables, and timelines.</li>
+                    <li>Chose the appropriate technologies and frameworks, with a focus on Expo for React Native app development.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-header-left">
+                    <h3 class="exp-role">Front-End Mobile, Web, Extension Developer</h3>
+                    <div class="exp-company">Appota</div>
+                </div>
+                <div class="exp-date">05/2023 - 01/2025</div>
+            </div>
+
+            <div class="project">
+                <h4 class="project-title">Wallacy Crypto Wallet</h4>
+                <div class="project-tech">Tech: React-native for mobile app, Svelte for browser extension</div>
+                <ul class="exp-desc">
+                    <li>Successfully built from scratch "Wallacy browser extension" and involved in "Wallacy mobile".</li>
+                    <li>Implemented wallet core, Wallet Connect from any DApps, and Dex aggregator.</li>
+                    <li>Integrated Swap/Bridge (LIFI, 1Inch), perp-trading (OKX, Bitget), and an AI trading bot.</li>
+                    <li>Developed loyalty point system from scratch, Reward hub, and Predict Euro Event.</li>
+                    <li>Integrated Telegram mini app using Pocketbase for API interaction and wallet signing.</li>
+                    <li>Optimized mobile app performance and interacted with back-end developers to ensure compatibility.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-header-left">
+                    <h3 class="exp-role">ReactJS, React-Native Developer (Team Leader)</h3>
+                    <div class="exp-company">CMC Global</div>
+                </div>
+                <div class="exp-date">08/2021 - 05/2023</div>
+            </div>
+
+            <div class="project">
+                <h4 class="project-title">MSP Development (01/2023 - 05/2023)</h4>
+                <div class="project-tech">Tech: Vuejs</div>
+                <ul class="exp-desc">
+                    <li>Developed new UI and features using Vuejs for a platform automating environment configuration and SR processing.</li>
+                    <li>Ensured compatibility across browsers and optimized page load speed.</li>
+                </ul>
+            </div>
+            
+            <div class="project">
+                <h4 class="project-title">Seasmart (10/2022 - 03/2023)</h4>
+                <div class="project-tech">Tech: React-native</div>
+                <ul class="exp-desc">
+                    <li>Built React Native mobile application from scratch to manage user profiles, documents, and news updates.</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <h4 class="project-title">ArctX API Management (10/2022 - 01/2023)</h4>
+                <div class="project-tech">Tech: Reactjs, Typescript</div>
+                <ul class="exp-desc">
+                    <li>Acted as Front-end Team leader. Built a back-office web app from scratch using Reactjs for an ESB system.</li>
+                    <li>Clarified requirements, broke down tasks, reviewed code, and communicated directly with business teams.</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <h4 class="project-title">Myria (05/2022 - 10/2022)</h4>
+                <div class="project-tech">Tech: Web3, Reactjs, Nextjs, Typescript</div>
+                <ul class="exp-desc">
+                    <li>Built an NFT marketplace from scratch using Reactjs and Nextjs.</li>
+                    <li>Supported team to deal with tasks related to Web3 and blockchain (create signature, deposit, withdrawal flow, buy and sell NFT flow).</li>
+                </ul>
+            </div>
+
+            <div class="project">
+                <h4 class="project-title">Workforce Optimizer (11/2021 - 05/2022)</h4>
+                <div class="project-tech">Tech: React-native</div>
+                <ul class="exp-desc">
+                    <li>Maintained and developed new features for an older version of react-native (RN 0.59) application used by hospitals in Singapore.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-header-left">
+                    <h3 class="exp-role">Mobile Developer</h3>
+                    <div class="exp-company">HiSoft VN</div>
+                </div>
+                <div class="exp-date">03/2020 - 08/2021</div>
+            </div>
+            
+            <div class="project">
+                <h4 class="project-title">911 IT Helpdesk & Multiple Apps</h4>
+                <div class="project-tech">Tech: React-native, Android, iOS</div>
+                <ul class="exp-desc">
+                    <li>Built code base using React Native for 911 IT Helpdesk, applying Firebase, Camera, Geolocation, Deeplink.</li>
+                    <li>Developed and published multiple apps: App 911 Service Desk, App S-Management, Occupational safety apps (Delta, ECP).</li>
+                    <li>Responsible for the backend side of Delta and ECP applications.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-header-left">
+                    <h3 class="exp-role">Fresher React Native Developer</h3>
+                    <div class="exp-company">Chungxe JSC</div>
+                </div>
+                <div class="exp-date">06/2019 - 12/2019</div>
+            </div>
+            <div class="project">
+                <h4 class="project-title">Chungxe Mobile Apps & Web Platforms</h4>
+                <div class="project-tech">Tech: React Native, ReactJS, Node.js, TypeORM, PostgreSQL</div>
+                <ul class="exp-desc">
+                    <li>Developed and published Chungxe mobile applications for customers and vendors (Android & iOS) using <span class="highlight">React Native</span>.</li>
+                    <li>Built the administrative Backoffice web-app and Customer-facing web-app using ReactJS.</li>
+                    <li>Developed and maintained the Chungxe API services using Node.js and TypeORM framework.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <div class="exp-header-left">
+                    <h3 class="exp-role">Java Developer</h3>
+                    <div class="exp-company">Thịnh Vượng Media</div>
+                </div>
+                <div class="exp-date">06/2017 - 03/2018</div>
+            </div>
+            <ul class="exp-desc">
+                <li>Worked with Java EE and Java SE.</li>
+            </ul>
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>
